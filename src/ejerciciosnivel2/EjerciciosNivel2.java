@@ -6,7 +6,17 @@ package ejerciciosnivel2;
 public class EjerciciosNivel2 {
 
     public boolean esEscaleraPalabras(char[][] listaPalabras){
-        
+        for (int i=0; i<listaPalabras.length-1; i++){
+            int contador = 0;
+            for (int j=0; j<listaPalabras[0].length; j++){
+                if (listaPalabras[i][j] == listaPalabras[i+1][j]){
+                    contador++;
+                }
+            }
+            if (contador != 1){ //si es distinto de uno es porque se diferencian en mas de un caracter
+                return false;
+            }
+        }
         return true;
     }
     
@@ -25,6 +35,10 @@ public class EjerciciosNivel2 {
             {'G', 'A', 'T', 'O'}, 
             {'M', 'A', 'T', 'O'}, 
         };
+        EjerciciosNivel2 e = new EjerciciosNivel2();
+        System.out.println(e.esEscaleraPalabras(listaPalabras));
+        
+        
     }
     
 }
