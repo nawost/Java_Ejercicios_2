@@ -35,6 +35,30 @@ public class EjerciciosNivel2 {
         return coste;
     }
     
+    private int subcadenaDeStrings (String str1, String str2){
+        int posicion = -1;
+        for (int i=0; i<str1.length(); i++){
+            if (str1.charAt(i) == str2.charAt(0)){
+                posicion = i;
+                int j = 0;
+                while (j < str2.length() && i < str1.length() && str1.charAt(i) == str2.charAt(j)){
+                    j++;
+                    i++;
+                }
+                if (j == str2.length()){//ha encontrado la palabra 2 en la palabra 1
+                    return posicion;
+                }
+                if (i == str1.length()){//se ha terminado la palabra 1 y no se ha encontrado la palabra 2
+                    return -1;
+                }
+                //si llega aqui es porque la palabra 1 es distinto a la palabra dos
+                i = posicion;
+                posicion = -1;
+            }
+        }
+        return posicion;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -49,7 +73,9 @@ public class EjerciciosNivel2 {
             {'M', 'A', 'T', 'O'}, 
         };
         EjerciciosNivel2 e = new EjerciciosNivel2();
+        //Ejercicio 1
         System.out.println(e.esEscaleraPalabras(listaPalabras));
+        //Ejercicio 2
         System.out.println(e.costeErroresADN("ACGT", "TGCA"));
         System.out.println(e.costeErroresADN("A-C-G-T-ACGT", "TTGGCCAATGCA"));
         System.out.println(e.costeErroresADN("AAAAAAAA", "TTTATTTT"));
@@ -58,6 +84,10 @@ public class EjerciciosNivel2 {
         System.out.println(e.costeErroresADN("--------", "ACGTACGT"));
         System.out.println(e.costeErroresADN("TAATAA", "ATTATT"));
         System.out.println(e.costeErroresADN("GGGA-GAATATCTGGACT", "CCCTACTTA-AGACCGGT"));
+        //Ejercicio 3
+        System.out.println(e.subcadenaDeStrings("HOLA MUNDO", "MU"));
+        System.out.println(e.subcadenaDeStrings("HOLA MUNDO", "ME"));
+        System.out.println(e.subcadenaDeStrings("HOLA MUNDO", "DO"));
     }
     
 }
